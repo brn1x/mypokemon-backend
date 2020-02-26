@@ -55,5 +55,6 @@ typings/
 # next.js build output
 .next
 
-#debug
+# vscode
 .vscode/*
+!.vscode/settings.json
