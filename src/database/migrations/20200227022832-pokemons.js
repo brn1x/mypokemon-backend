@@ -2,11 +2,16 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('pokemon', {
+    return queryInterface.createTable('pokemons', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+        allowNull: false
+      },
+      pokedex_number: {
+        type: Sequelize.INTEGER,
+        unique: true,
         allowNull: false
       },
       name: {
@@ -48,6 +53,6 @@ module.exports = {
     })
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('pokemon')
+    return queryInterface.dropTable('pokemons')
   }
 }

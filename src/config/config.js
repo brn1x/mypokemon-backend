@@ -6,6 +6,7 @@ module.exports = {
   database: process.env.DATABASE,
   define: {
     timestamps: true,
+    underscored: true,
     ssl: true
   }
 }
