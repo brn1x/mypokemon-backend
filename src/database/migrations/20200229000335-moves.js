@@ -2,35 +2,25 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('pokemons', {
+    return queryInterface.createTable('moves', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
-      pokedex_number: {
+      type_id: {
         type: Sequelize.INTEGER,
-        unique: true,
-        allowNull: false
+        allowNull: false,
+        references: { model: 'types', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       },
       name: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      avatar: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
-      hp: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      attack: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
-      defense: {
+      damage: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
@@ -44,7 +34,8 @@ module.exports = {
       }
     })
   },
+
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('pokemons')
+    return queryInterface.dropTable('moves')
   }
 }

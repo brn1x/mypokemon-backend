@@ -5,19 +5,18 @@ class Pokemon extends Model {
     super.init({
       pokedex_number: DataTypes.INTEGER,
       name: DataTypes.STRING,
+      avatar: DataTypes.STRING,
       hp: DataTypes.INTEGER,
       attack: DataTypes.INTEGER,
-      defense: DataTypes.INTEGER,
-      sp_atk: DataTypes.INTEGER,
-      sp_def: DataTypes.INTEGER,
-      speed: DataTypes.INTEGER
+      defense: DataTypes.INTEGER
     }, {
       sequelize
     })
   }
 
   static associate (models) {
-    this.belongsToMany(models.Type, { foreignKey: 'pokemon_id', through: 'pokemon_types', as: 'pokemon' })
+    this.belongsToMany(models.Type, { foreignKey: 'pokemon_id', through: 'pokemon_types', as: 'types' })
+    this.belongsToMany(models.Move, { foreignKey: 'pokemon_id', through: 'pokemon_moves', as: 'moves' })
   }
 }
 
